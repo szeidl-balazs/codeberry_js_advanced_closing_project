@@ -2,11 +2,11 @@ function pageLoaded () {
     var canvas = document.getElementById('myCanvas');
     var context = canvas.getContext('2d');
     
+    
     // TRANSLATE to rotation point.    
     context.translate(canvas.width/2, canvas.height/2);
     
-    
-    
+   
     
     /*circle */
     
@@ -32,26 +32,27 @@ function pageLoaded () {
         //stalk
         context.beginPath();
         context.moveTo(0,circleRadius);
-        context.lineTo(0,200);
+        context.lineTo(0,350);
         context.strokeStyle = 'green';
         context.lineWidth =10;
         context.stroke();
         
         
         //leaf
+
+        let leafStartX = 0;
+        let leafStartY = 180;
+        let leafCp1X = 200;
+        let leafCp1Y = 10;
+        let leafCp2X =300;
+        let leafCp2Y = 180;
+        let leafEndX = 0;
+        let leafEndY = 180;        
         
         function leaf () {
 
-            for (let k = 0; k < 3; k++) {
+            for (let k = 0; k < 6; k++) {
 
-                let leafStartX = 0;
-                let leafStartY = 200;
-                let leafCp1X = 200;
-                let leafCp1Y = 10;
-                let leafCp2X =300;
-                let leafCp2Y = 180;
-                let leafEndX = 0;
-                let leafEndY = 200;        
             
                 context.beginPath();
                 context.moveTo(leafStartX,leafStartY);
@@ -59,13 +60,21 @@ function pageLoaded () {
                 context.fillStyle = 'green';
                 context.fill();
 
-            }
+                console.log(k);
+                console.log(leafCp1X);
+                leafCp1X = leafCp1X * -1;
+                leafCp2X *= -1;
+                leafStartY += 30;
+                leafEndY +=30;
+                leafCp1Y += 30;
+                leafCp2Y += 30;
+                console.log(leafCp1X);
 
+            }
 
         }
 
         leaf();
-
    
    
     /*petal*/
@@ -111,7 +120,7 @@ function pageLoaded () {
     
     drawPetal();
 
-
+  
     
 
 }
